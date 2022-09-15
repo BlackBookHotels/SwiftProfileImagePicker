@@ -752,7 +752,7 @@ extension SwiftProfileImagePicker {
      *  @param vc    view controller requesting presentation of the edit screen
      *  @param image the image to show in the edit screen
      */
-    func presentEditScreen(vc: UIViewController,
+    public func presentEditScreen(vc: UIViewController,
                            with image: UIImage) {
 
         isDisplayFromPicker = false
@@ -772,7 +772,7 @@ extension SwiftProfileImagePicker {
      *
      *  @param vc the view controller requesting presentation of the photo library selection.
      */
-    func selectFromPhotoLibrary(vc: UIViewController) {
+    public func selectFromPhotoLibrary(vc: UIViewController) {
         
         imagePicker = UIImagePickerController()
         
@@ -797,7 +797,7 @@ extension SwiftProfileImagePicker {
      *
      *  @param vc the view controller requesting presentation of the camera.
      */
-    func selectFromCamera(vc: UIViewController) {
+    public func selectFromCamera(vc: UIViewController) {
         
         isPresentingCamera = true
         
