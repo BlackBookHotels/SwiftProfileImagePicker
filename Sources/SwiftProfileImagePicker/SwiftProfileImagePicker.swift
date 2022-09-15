@@ -8,8 +8,6 @@
 import Foundation
 import UIKit
 import AVFoundation
-import CoreMedia
-import ImageIO
 import MobileCoreServices
 import MMSCameraViewController
 
