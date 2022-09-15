@@ -15,7 +15,7 @@ import MMSCameraViewController
 
 let kOverlayInset:CGFloat = 10
 
-protocol SwiftProfileImagePickerDelegate: AnyObject {
+public protocol SwiftProfileImagePickerDelegate: AnyObject {
     /**
      *  The user canceled out of the image selection operation.
      *
@@ -35,7 +35,7 @@ protocol SwiftProfileImagePickerDelegate: AnyObject {
 
 }
 
-class SwiftProfileImagePicker: UIViewController, UIScrollViewDelegate
+public class SwiftProfileImagePicker: UIViewController, UIScrollViewDelegate
 {    
     public var delegate: SwiftProfileImagePickerDelegate?
     
@@ -160,12 +160,12 @@ class SwiftProfileImagePicker: UIViewController, UIScrollViewDelegate
         super.init(coder: coder)
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         createSubViews()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         positionImageView()
     }
@@ -176,7 +176,7 @@ class SwiftProfileImagePicker: UIViewController, UIScrollViewDelegate
      *  @param flag       Pass yes to animate the transition.
      *  @param completion The block to execute after the controller is dismissed.
      */
-    override func dismiss(animated flag: Bool, 
+    public override func dismiss(animated flag: Bool, 
                           completion: (() -> Void)? = nil) {
         if (isPresentingCamera) {
             
@@ -210,7 +210,7 @@ class SwiftProfileImagePicker: UIViewController, UIScrollViewDelegate
         }
     }
     
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.portrait
     }
     
@@ -480,7 +480,7 @@ extension SwiftProfileImagePicker {
      *  @return the image view
      */
     
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
     
@@ -491,7 +491,7 @@ extension SwiftProfileImagePicker {
      *  @param view  the view that was zoomed
      *  @param scale the scale factor
      */
-    func scrollViewDidEndZooming(
+    public func scrollViewDidEndZooming(
         _ scrollView: UIScrollView,
         with view: UIView?,
         atScale scale: CGFloat
@@ -851,7 +851,7 @@ extension SwiftProfileImagePicker {
 
 extension SwiftProfileImagePicker: MMSCameraViewDelegate {
     
-    func cameraDidCaptureStillImage(_ image: UIImage, camera cameraController: MMSCameraViewController) {
+    public func cameraDidCaptureStillImage(_ image: UIImage, camera cameraController: MMSCameraViewController) {
         edit(image: image)
     }
 }
@@ -866,7 +866,7 @@ extension SwiftProfileImagePicker: UINavigationControllerDelegate, UIImagePicker
      *  @param picker <#picker description#>
      *  @param info   <#info description#>
      */
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         imageToEdit = info[.originalImage] as? UIImage
         
@@ -881,7 +881,7 @@ extension SwiftProfileImagePicker: UINavigationControllerDelegate, UIImagePicker
      *
      *  @param picker the image picker controller.
      */
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         self.delegate?.swiftImagePickerControllerDidCancel(self)
     }
 }
