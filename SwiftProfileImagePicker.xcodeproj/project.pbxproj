@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E4BDCD628D2FE1400672587 /* MMSCameraViewController in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4BDCD528D2FE1400672587 /* MMSCameraViewController */; };
 		4EB5C9F428CDCF880073368E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5C9F328CDCF880073368E /* AppDelegate.swift */; };
 		4EB5C9F628CDCF880073368E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5C9F528CDCF880073368E /* SceneDelegate.swift */; };
 		4EB5C9F828CDCF880073368E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5C9F728CDCF880073368E /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 		4EB5CA0B28CDCF8A0073368E /* SwiftProfileImagePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5CA0A28CDCF8A0073368E /* SwiftProfileImagePickerTests.swift */; };
 		4EB5CA1528CDCF8A0073368E /* SwiftProfileImagePickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5CA1428CDCF8A0073368E /* SwiftProfileImagePickerUITests.swift */; };
 		4EB5CA1728CDCF8A0073368E /* SwiftProfileImagePickerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5CA1628CDCF8A0073368E /* SwiftProfileImagePickerUITestsLaunchTests.swift */; };
+		4EB5CA2628CDD03B0073368E /* SwiftProfileImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5CA2528CDD03B0073368E /* SwiftProfileImagePicker.swift */; };
+		4EB5CA2828CDD0730073368E /* UIImage+Cropping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB5CA2728CDD0730073368E /* UIImage+Cropping.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,8 @@
 		4EB5CA1028CDCF8A0073368E /* SwiftProfileImagePickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftProfileImagePickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EB5CA1428CDCF8A0073368E /* SwiftProfileImagePickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftProfileImagePickerUITests.swift; sourceTree = "<group>"; };
 		4EB5CA1628CDCF8A0073368E /* SwiftProfileImagePickerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftProfileImagePickerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4EB5CA2528CDD03B0073368E /* SwiftProfileImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftProfileImagePicker.swift; sourceTree = "<group>"; };
+		4EB5CA2728CDD0730073368E /* UIImage+Cropping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Cropping.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E4BDCD628D2FE1400672587 /* MMSCameraViewController in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +85,7 @@
 		4EB5C9E728CDCF880073368E = {
 			isa = PBXGroup;
 			children = (
+				4EB5CA2A28CE0DD00073368E /* Sources */,
 				4EB5C9F228CDCF880073368E /* SwiftProfileImagePicker */,
 				4EB5CA0928CDCF8A0073368E /* SwiftProfileImagePickerTests */,
 				4EB5CA1328CDCF8A0073368E /* SwiftProfileImagePickerUITests */,
@@ -127,6 +134,23 @@
 			path = SwiftProfileImagePickerUITests;
 			sourceTree = "<group>";
 		};
+		4EB5CA2A28CE0DD00073368E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				4EB5CA2B28CE0DD00073368E /* SwiftProfileImagePicker */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		4EB5CA2B28CE0DD00073368E /* SwiftProfileImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				4EB5CA2528CDD03B0073368E /* SwiftProfileImagePicker.swift */,
+				4EB5CA2728CDD0730073368E /* UIImage+Cropping.swift */,
+			);
+			path = SwiftProfileImagePicker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +167,9 @@
 			dependencies = (
 			);
 			name = SwiftProfileImagePicker;
+			packageProductDependencies = (
+				4E4BDCD528D2FE1400672587 /* MMSCameraViewController */,
+			);
 			productName = SwiftProfileImagePicker;
 			productReference = 4EB5C9F028CDCF880073368E /* SwiftProfileImagePicker.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +242,9 @@
 				Base,
 			);
 			mainGroup = 4EB5C9E728CDCF880073368E;
+			packageReferences = (
+				4E4BDCD428D2FE1400672587 /* XCRemoteSwiftPackageReference "MMSCameraViewController" */,
+			);
 			productRefGroup = 4EB5C9F128CDCF880073368E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,9 +288,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EB5CA2828CDD0730073368E /* UIImage+Cropping.swift in Sources */,
 				4EB5C9F828CDCF880073368E /* ViewController.swift in Sources */,
 				4EB5C9F428CDCF880073368E /* AppDelegate.swift in Sources */,
 				4EB5C9F628CDCF880073368E /* SceneDelegate.swift in Sources */,
+				4EB5CA2628CDD03B0073368E /* SwiftProfileImagePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +634,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4E4BDCD428D2FE1400672587 /* XCRemoteSwiftPackageReference "MMSCameraViewController" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BlackBookHotels/MMSCameraViewController.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4E4BDCD528D2FE1400672587 /* MMSCameraViewController */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E4BDCD428D2FE1400672587 /* XCRemoteSwiftPackageReference "MMSCameraViewController" */;
+			productName = MMSCameraViewController;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4EB5C9E828CDCF880073368E /* Project object */;
 }

@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "mmscameraviewcontroller",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/BlackBookHotels/MMSCameraViewController.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "fa152a4173d609cdbfd9d9a16a2d33a81bd32b23"
+      }
+    }
+  ],
+  "version" : 2
+}
