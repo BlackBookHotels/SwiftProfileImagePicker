@@ -10,11 +10,9 @@ let package = Package(
             targets: ["SwiftProfileImagePicker"]),
     ],
     dependencies: [
-        .package(name: "MMSCameraViewController",
-            url: "https://github.com/BlackBookHotels/MMSCameraViewController.git",
-                .branch("master")
+        .package(url: "https://github.com/BlackBookHotels/MMSCameraViewController.git",
+                 branch: "master"
         )
-
     ],
     targets: [
         .target(
