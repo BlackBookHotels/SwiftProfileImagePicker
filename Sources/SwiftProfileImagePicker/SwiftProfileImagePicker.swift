@@ -13,7 +13,7 @@ import MMSCameraViewController
 
 let kOverlayInset:CGFloat = 10
 
-public protocol SwiftProfileImagePickerDelegate: AnyObject {
+public protocol SwiftProfileImagePickerDelegate {
     /**
      *  The user canceled out of the image selection operation.
      *
