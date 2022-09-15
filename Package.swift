@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "SwiftProfileImagePicker",
+    defaultLocalization: "en",
     products: [
         .library(
             name: "SwiftProfileImagePicker",
@@ -17,7 +18,10 @@ let package = Package(
     targets: [
         .target(
             name: "SwiftProfileImagePicker",
-            dependencies: ["MMSCameraViewController"])
+            dependencies: ["MMSCameraViewController"],
+            resources: [
+                .process("Assets")
+            ])
         ,
         .testTarget(
             name: "SwiftProfileImagePickerTests",
