@@ -823,7 +823,7 @@ extension SwiftProfileImagePicker {
      */
     func lString(key: String, comment: String) -> String {
                 
-        return NSLocalizedString(key, tableName: "Localized", bundle: Bundle.main, value: "", comment: "")
+        return NSLocalizedString(key, tableName: "Localized", bundle: Bundle.module, value: "", comment: "")
     }
     
     /// mark - Camera setup and capture
