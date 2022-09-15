@@ -121,7 +121,7 @@ public class SwiftProfileImagePicker: UIViewController, UIScrollViewDelegate
     /**
      *  holds the still image from the camera
      */
-    internal var stillImageOutput: AVCaptureStillImageOutput? = nil
+    internal var stillImageOutput: AVCapturePhotoOutput? = nil
     
     /**
      *  Is displaying the photo picker
