@@ -809,7 +809,7 @@ extension SwiftProfileImagePicker {
         
         presentingVC = vc
         
-        presentingVC?.present(self, animated: true)
+        presentingVC?.present(camera!, animated: true)
     }
    
     
