@@ -153,11 +153,6 @@ public class SwiftProfileImagePicker: UIViewController, UIScrollViewDelegate
      */
     internal var presentingVC: UIViewController?
     
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
     public override func viewDidLoad() {
         super.viewDidLoad()
         createSubViews()
