@@ -31,7 +31,7 @@ public protocol SwiftProfileImagePickerDelegate: AnyObject {
      *  @param info   A dictionary containing the original image and the edited image, if an image was picked; The dictionary also contains any relevant editing information. .
      */
     func swiftImagePickerController(_ picker: SwiftProfileImagePicker,
-                                    didFinishPickingMedia with: Dictionary<UIImagePickerController.InfoKey, Any>)
+                                    didFinishPickingMediaWithInfo info: Dictionary<UIImagePickerController.InfoKey, Any>)
 
 }
 
@@ -715,7 +715,7 @@ extension SwiftProfileImagePicker {
         info[.mediaType] = kUTTypeImage
         info[.cropRect] = imageCropRect
         
-        self.delegate?.swiftImagePickerController(self, didFinishPickingMedia: info)
+        self.delegate?.swiftImagePickerController(self, didFinishPickingMediaWithInfo: info)
     }
     
     /** cancel
