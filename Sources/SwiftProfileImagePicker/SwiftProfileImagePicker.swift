@@ -689,7 +689,7 @@ extension SwiftProfileImagePicker {
         
         let screenCropRect = CGRect(x: cropOrigin.x, y: cropOrigin.y, width: cropRect.size.width, height: cropRect.size.height);
         
-        img = imageView.image?.cropRectangle(cropRect: screenCropRect, inFrame:scrollView.contentSize)
+        img = imageView.image?.crop(rect: screenCropRect, in:scrollView.contentSize)
         
         /* transpose the crop rectangle from the screen dimensions to the actual image dimensions.
          */

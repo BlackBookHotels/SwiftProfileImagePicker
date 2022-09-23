@@ -126,59 +126,7 @@ extension UIImage { // (Cropping)
         
         return scaleSize
     }
-    
-    /** scale bitmap to size
-     *  returns an UIImage scaled to the input dimensions. Oftentimes the underlining CGImage does not match the orientation of the UIImage. This routing scales the UIImage dimensions not the CGImage's, and so it swaps the height and width of the scale size when it detects the UIImage is oriented differently.
-     *
-     *  @param scaleSize the dimensions to scale the bitmap to.
-     *
-     *  @return A reference to a uimage created from the scaled bitmap
-     */
-    func scaleBitmap(toSize scaleSize: CGSize) -> UIImage?
-    {
-        guard let cgImage = self.cgImage,
-              let colorSpace = cgImage.colorSpace  else  { return nil }
 
-        /* round the size of the underlying CGImage and the input size.
-         */
-        var scaleSize = CGSize(width: round(scaleSize.width), height: round(scaleSize.height))
-        
-        /* if the underlying CGImage is oriented differently than the UIImage then swap the width and height of the scale size. This method assumes the size passed is a request on the UIImage's orientation.
-         */
-        if ([.left, .right].contains(self.imageOrientation)) {
-            
-            scaleSize = CGSize(width: round(scaleSize.height), height: round(scaleSize.width))
-        }
-        
-        /* Create a bitmap context in the dimensions of the scale size and draw the underlying CGImage into the context.
-         */
-        
-        let context:CGContext? = CGContext(data: nil, width:  Int(scaleSize.width), height: Int(scaleSize.height), bitsPerComponent: cgImage.bitsPerComponent, bytesPerRow: 0, space: colorSpace, bitmapInfo: cgImage.bitmapInfo.rawValue)
- 
-        var returnImg:UIImage? = nil
-                
-        if let context = context {
-            context.draw(cgImage, in: CGRect(x: 0, y: 0, width: scaleSize.width, height: scaleSize.height))
-            
-            /* realize the CGImage from the context.
-             */
-            if let imgRef = context.makeImage()
-            {            
-                /* realize the CGImage into a UIImage. */
-                returnImg = UIImage(cgImage: imgRef)
-            }
-            
-        } else {
-            
-            /* context creation failed, so return a copy of the image, and log the error. */
-            NSLog("NULL Bitmap Context in scaleBitmapToSize")
-            
-            returnImg = UIImage(cgImage: cgImage)
-        }
-        
-        return returnImg;
-    }
-    
     /* transposeCropRect:fromBound:toBound transposes the origin of the crop rectangle to match the orientation of the underlying CGImage. For some orientations, the height and width are swaped.
      */
     func transposeCropRect(
@@ -251,28 +199,43 @@ extension UIImage { // (Cropping)
         
         return transposedRect
     }
+    
     /* cropRectangle:inFrame returns a new UIImage cut from the cropArea of the underlying image.  It first scales the underlying image to the scale size before cutting the crop area from it. The returned CGImage is in the dimensions of the cropArea and it is oriented the same as the underlying CGImage as is the imageOrientation.
      */
-    func cropRectangle(cropRect: CGRect,
-                       inFrame: CGSize) -> UIImage? {
+    func crop(rect: CGRect,
+              in frame: CGSize) -> UIImage? {
         
-        let frameSize: CGSize = CGSize(width: round(inFrame.width), height: round(inFrame.height))
+        //resize the image to match frame param */
+        let img: UIImage = imageWith(newSize: frame)
         
-        /* resize the image to match the zoomed content size */
-        let img: UIImage? = scaleBitmap(toSize:frameSize)
-        
-        /* crop the resized image to the crop rectangel.
-         */
-        if let cropRef:CGImage = img?.cgImage?.cropping(
-            to: transposeCropRect(cropRect: cropRect,
-                                  inDimension: frameSize,forOrientation: self.imageOrientation)) {
-    
-                let croppedImg:UIImage = UIImage(cgImage: cropRef, scale: 1.0, orientation: imageOrientation)
-            
-            return croppedImg
-            
+        let scaledCropRect = CGRect(
+            x: rect.origin.x * img.scale, 
+            y: rect.origin.y * img.scale,
+            width: rect.size.width * img.scale,
+            height: rect.size.height * img.scale)
+
+        // crop the resized image to the crop rectangle.
+        guard let cropRef:CGImage = img.cgImage?.cropping(
+            to: scaledCropRect) else {
+            return nil
         }
         
-        return nil
+        var image = UIImage(cgImage: cropRef, 
+                            scale: img.scale, 
+                            orientation: img.imageOrientation)
+        
+        return UIImage(cgImage: cropRef, 
+                       scale: img.scale, 
+                       orientation: image.imageOrientation)
+    }
+    
+    func imageWith(newSize: CGSize) -> UIImage {
+        let image = UIGraphicsImageRenderer(size: newSize).image { _ in
+            draw(in: CGRect(origin: .zero, size: newSize))
+        }
+            
+        return image.withRenderingMode(renderingMode)
     }
 }
+
+
